@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+            integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+            crossorigin="anonymous"></script>
+
+            <link href="https://fonts.googleapis.com/css2?family=Modak&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+</head>
+
+<style type="text/css" >
+
+	body
+	{
+		font-family: 'Yellowtail', cursive;
+	
+		background-size: cover;
+		background: rgb(205,112,25);
+	    background: -webkit-linear-gradient(left, rgba(205,112,25,1) 0%, rgba(63,94,251,1) 0%, rgba(180,79,162,1) 53%, rgba(186,70,252,1) 87%);
+	    background: -o-linear-gradient(left, rgba(205,112,25,1) 0%, rgba(63,94,251,1) 0%, rgba(180,79,162,1) 53%, rgba(186,70,252,1) 87%);
+	    background: linear-gradient(to right, rgba(205,112,25,1) 0%, rgba(63,94,251,1) 0%, rgba(180,79,162,1) 53%, rgba(186,70,252,1) 87%);
+
+	
+	}
+	
+</style>
+<body>
+
+
+    <div class="container">
+
+    	<h1 class="text-center text-uppercase text-white pt-2">Stop Watch</h1>
+   
+    <div class="row  col-xl-10 col-lg-10 col-md-10 col-sm-10 col-12 m-auto ">
+
+    	<div class=" position-relative " style="top: 170px;">
+ 
+        <div class="card text-white w-50  d-flex m-auto " style=" background-color: black; opacity: 50%;">
+        <div class="card-body d-flex justify-content-around mb-2 mt-5 ">
+               
+        <h1 id="min" class="text-center text-primary">00</h1>
+        <h1 id="sec" class="text-center text-warning">00</h1>
+        <h1 id="milisec" class="text-center text-danger">00</h1>
+        
+      
+    </div>
+
+
+    <div class="d-flex justify-content-around mb-2">
+    <h6>Minutes</h6>
+    <h6>Seconds</h6>
+    <h6>Miliseconds</h6>
+    	
+    </div>
+    
+
+    <div class="d-flex justify-content-around mb-3">
+    <i onclick="Start_timer()" class="fa fa-play-circle fa-3x text-primary" ></i>
+    <i onclick="Pause_timer()" class="fa fa-pause-circle fa-3x"></i>
+    <i onclick="Reset_timer()" class="fa fa-stop-circle fa-3x text-warning"></i>
+
+
+
+  
+    </div>
+    </div>
+
+        </div>
+        </div>
+ </div>
+
+    
+</body>
+
+<script>
+
+    
+    var minute =  0
+    var seconds =  0
+    var miliseconds =  0
+    var interval
+    
+   var minheading  =  document.getElementById('min')
+   var secheading =  document.getElementById('sec')
+   var milisecheading =  document.getElementById('milisec')
+
+    function timer() 
+    {
+        miliseconds++ 
+        milisecheading.innerHTML = miliseconds
+        if (miliseconds >= 100)
+        {
+            seconds++ 
+            secheading.innerHTML = seconds  
+            miliseconds = 0
+        }
+        else if(seconds >= 60)
+        {
+            minute++
+            minheading.innerHTML = minute
+            seconds = 0
+        }
+       
+        
+       
+       
+        
+    }
+
+   function Start_timer()
+   {
+
+    interval = setInterval(timer,10)
+
+   }
+
+
+   function Pause_timer()
+   {
+
+     clearInterval(interval)
+   }
+
+   function Reset_timer()
+   {
+         minute = 0
+         seconds = 0
+         miliseconds = 0  
+
+         minheading.innerHTML =  minute 
+         secheading.innerHTML =   seconds
+         milisecheading.innerHTML = miliseconds 
+         clearInterval(interval)
+
+
+   }
+
+
+  
+       
+        
+    
+ 
+</script>
+</html>
